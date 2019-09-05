@@ -49,7 +49,7 @@ logo.setAttribute("src", siteContent["nav"]["img-src"]);
 // Nav elements
 const navElements = document.querySelectorAll("a");
 for (let i = 0; i < navElements.length; i++) {
-  navElements[i].innerText = siteContent["nav"][`nav-item-${i + 1}`];
+  navElements[i].textContent = siteContent["nav"][`nav-item-${i + 1}`];
 }
 
 // CTA section
@@ -61,11 +61,12 @@ ctaH1.innerHTML = `${ctaH1Text[0]}<br> ${ctaH1Text[1]}<br> ${ctaH1Text[2]}`;
 
 // button
 const ctaButton = document.querySelector("button");
-ctaButton.innerText = siteContent.cta.button;
+ctaButton.textContent = siteContent.cta.button;
 
 // CTA image
-const ctaImg = document.getElementById("cta-img");
-ctaImg.setAttribute("src", siteContent.cta["img-src"]);
+document
+  .getElementById("cta-img")
+  .setAttribute("src", siteContent.cta["img-src"]);
 
 // Main-content section
 
@@ -73,16 +74,16 @@ ctaImg.setAttribute("src", siteContent.cta["img-src"]);
 const topContent = document.querySelectorAll(".top-content .text-content");
 
 // features
-topContent[0].children[0].innerText =
+topContent[0].children[0].textContent =
   siteContent["main-content"]["features-h4"];
 
-topContent[0].children[1].innerText =
+topContent[0].children[1].textContent =
   siteContent["main-content"]["features-content"];
 
 // about
-topContent[1].children[0].innerText = siteContent["main-content"]["about-h4"];
+topContent[1].children[0].textContent = siteContent["main-content"]["about-h4"];
 
-topContent[1].children[1].innerText =
+topContent[1].children[1].textContent =
   siteContent["main-content"]["about-content"];
 
 // middle img
@@ -96,24 +97,24 @@ const bottomContent = document.querySelectorAll(
 );
 
 // services
-bottomContent[0].children[0].innerText =
+bottomContent[0].children[0].textContent =
   siteContent["main-content"]["services-h4"];
 
-bottomContent[0].children[1].innerText =
+bottomContent[0].children[1].textContent =
   siteContent["main-content"]["services-content"];
 
 // product
-bottomContent[1].children[0].innerText =
+bottomContent[1].children[0].textContent =
   siteContent["main-content"]["product-h4"];
 
-bottomContent[1].children[1].innerText =
+bottomContent[1].children[1].textContent =
   siteContent["main-content"]["product-content"];
 
 // vision
-bottomContent[2].children[0].innerText =
+bottomContent[2].children[0].textContent =
   siteContent["main-content"]["vision-h4"];
 
-bottomContent[2].children[1].innerText =
+bottomContent[2].children[1].textContent =
   siteContent["main-content"]["vision-content"];
 
 // Contact section
@@ -121,12 +122,33 @@ const contactElements = document.querySelectorAll(".contact");
 const contactContent = Object.keys(siteContent.contact);
 
 for (let i = 0; i < contactElements[0].children.length; i++) {
-  contactElements[0].children[i].innerText =
+  contactElements[0].children[i].textContent =
     siteContent.contact[contactContent[i]];
 }
 
 // Footer section
 const footer = document.getElementsByTagName("footer");
-console.log(footer);
 
-footer[0].innerText = siteContent.footer.copyright;
+footer[0].textContent = siteContent.footer.copyright;
+
+// change color of nav text
+navElements.forEach(element => (element.style.color = "green"));
+
+// add elements to nav
+const nav = document.querySelector("nav");
+const newNavElement1 = document.createElement("a");
+newNavElement1.setAttribute("href", "#");
+newNavElement1.setAttribute('style', 'color: green');
+
+const newNavElement2 = document.createElement("a");
+newNavElement2.setAttribute("href", "#");
+newNavElement2.setAttribute('style', 'color: green');
+
+const newNavText1 = document.createTextNode("New1");
+const newNavText2 = document.createTextNode("New2");
+
+newNavElement1.appendChild(newNavText1);
+nav.appendChild(newNavElement1);
+
+newNavElement2.appendChild(newNavText2);
+nav.prepend(newNavElement2);
