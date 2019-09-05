@@ -71,7 +71,6 @@ ctaImg.setAttribute("src", siteContent.cta["img-src"]);
 
 // top-content
 const topContent = document.querySelectorAll(".top-content .text-content");
-console.log(topContent);
 
 // features
 topContent[0].children[0].innerText =
@@ -118,3 +117,16 @@ bottomContent[2].children[1].innerText =
   siteContent["main-content"]["vision-content"];
 
 // Contact section
+const contactElements = document.querySelectorAll(".contact");
+const contactContent = Object.keys(siteContent.contact);
+
+for (let i = 0; i < contactElements[0].children.length; i++) {
+  contactElements[0].children[i].innerText =
+    siteContent.contact[contactContent[i]];
+}
+
+// Footer section
+const footer = document.getElementsByTagName("footer");
+console.log(footer);
+
+footer[0].innerText = siteContent.footer.copyright;
