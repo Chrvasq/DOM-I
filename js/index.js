@@ -68,7 +68,8 @@ const ctaButton = document.querySelector("button");
 ctaButton.textContent = siteContent.cta.button;
 
 // CTA image
-document.querySelector("#cta-img").src = siteContent.cta["img-src"];
+const ctaImg = document.querySelector("#cta-img");
+ctaImg.src = siteContent.cta["img-src"];
 
 // Main-content section
 
@@ -96,8 +97,8 @@ mainContentPara.forEach(
 );
 
 // middle img
-document.querySelector("#middle-img").src =
-  siteContent["main-content"]["middle-img-src"];
+const middleImg = document.querySelector("#middle-img");
+middleImg.src = siteContent["main-content"]["middle-img-src"];
 
 // Contact section
 
@@ -139,3 +140,13 @@ nav.appendChild(newNavElement1);
 
 newNavElement2.appendChild(newNavText2);
 nav.prepend(newNavElement2);
+
+// Hide ctaimage on ctabutton click
+ctaButton.onclick = function() {
+  const img = ctaImg;
+  if (img.style.display === "none") {
+    img.style.display = "";
+  } else {
+    img.style.display = "none";
+  }
+};
