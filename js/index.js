@@ -64,9 +64,7 @@ const ctaButton = document.querySelector("button");
 ctaButton.textContent = siteContent.cta.button;
 
 // CTA image
-document
-  .getElementById("cta-img")
-  .setAttribute("src", siteContent.cta["img-src"]);
+document.getElementById("cta-img").src = siteContent.cta["img-src"];
 
 // Main-content section
 
@@ -87,9 +85,8 @@ topContent[1].children[1].textContent =
   siteContent["main-content"]["about-content"];
 
 // middle img
-document
-  .getElementById("middle-img")
-  .setAttribute("src", siteContent["main-content"]["middle-img-src"]);
+document.getElementById("middle-img").src =
+  siteContent["main-content"]["middle-img-src"];
 
 // bottom-content
 const bottomContent = document.querySelectorAll(
@@ -138,11 +135,11 @@ navElements.forEach(element => (element.style.color = "green"));
 const nav = document.querySelector("nav");
 const newNavElement1 = document.createElement("a");
 newNavElement1.setAttribute("href", "#");
-newNavElement1.setAttribute('style', 'color: green');
+newNavElement1.setAttribute("style", "color: green");
 
 const newNavElement2 = document.createElement("a");
 newNavElement2.setAttribute("href", "#");
-newNavElement2.setAttribute('style', 'color: green');
+newNavElement2.setAttribute("style", "color: green");
 
 const newNavText1 = document.createTextNode("New1");
 const newNavText2 = document.createTextNode("New2");
