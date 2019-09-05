@@ -46,13 +46,17 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute("src", siteContent["nav"]["img-src"]);
 
-// Nav elements
-const navElements = document.querySelectorAll("a");
-for (let i = 0; i < navElements.length; i++) {
-  navElements[i].textContent = siteContent["nav"][`nav-item-${i + 1}`];
-}
+// Nav Section
 
-// CTA section
+const navElements = document.querySelectorAll("a");
+const navElementList = Object.keys(siteContent.nav);
+const navItems = navElementList.filter(element => element.includes("nav"));
+
+navElements.forEach(
+  (element, index) => (element.textContent = siteContent.nav[navItems[index]])
+);
+
+// CTA Section
 
 // h1
 const ctaH1 = document.querySelector(".cta-text h1");
@@ -64,69 +68,55 @@ const ctaButton = document.querySelector("button");
 ctaButton.textContent = siteContent.cta.button;
 
 // CTA image
-document.getElementById("cta-img").src = siteContent.cta["img-src"];
+document.querySelector("#cta-img").src = siteContent.cta["img-src"];
 
 // Main-content section
 
-// top-content
-const topContent = document.querySelectorAll(".top-content .text-content");
+const mainContentList = Object.keys(siteContent["main-content"]);
 
-// features
-topContent[0].children[0].textContent =
-  siteContent["main-content"]["features-h4"];
+const h4ContentList = mainContentList.filter(content => content.includes("h4"));
 
-topContent[0].children[1].textContent =
-  siteContent["main-content"]["features-content"];
-
-// about
-topContent[1].children[0].textContent = siteContent["main-content"]["about-h4"];
-
-topContent[1].children[1].textContent =
-  siteContent["main-content"]["about-content"];
-
-// middle img
-document.getElementById("middle-img").src =
-  siteContent["main-content"]["middle-img-src"];
-
-// bottom-content
-const bottomContent = document.querySelectorAll(
-  ".bottom-content .text-content"
+const contentList = mainContentList.filter(content =>
+  content.includes("content")
 );
 
-// services
-bottomContent[0].children[0].textContent =
-  siteContent["main-content"]["services-h4"];
+// Get all h4 elements in .main-content class
+const mainContentH4 = document.querySelectorAll(".main-content h4");
+// Get all p elements in .main-content class
+const mainContentPara = document.querySelectorAll(".main-content p");
 
-bottomContent[0].children[1].textContent =
-  siteContent["main-content"]["services-content"];
+mainContentH4.forEach(
+  (element, index) =>
+    (element.textContent = siteContent["main-content"][h4ContentList[index]])
+);
 
-// product
-bottomContent[1].children[0].textContent =
-  siteContent["main-content"]["product-h4"];
+mainContentPara.forEach(
+  (element, index) =>
+    (element.textContent = siteContent["main-content"][contentList[index]])
+);
 
-bottomContent[1].children[1].textContent =
-  siteContent["main-content"]["product-content"];
-
-// vision
-bottomContent[2].children[0].textContent =
-  siteContent["main-content"]["vision-h4"];
-
-bottomContent[2].children[1].textContent =
-  siteContent["main-content"]["vision-content"];
+// middle img
+document.querySelector("#middle-img").src =
+  siteContent["main-content"]["middle-img-src"];
 
 // Contact section
-const contactElements = document.querySelectorAll(".contact");
+
+const contactH4 = document.querySelector(".contact h4");
+// Get all p elements in .contact class
+const contactPara = document.querySelectorAll(".contact p");
 const contactContent = Object.keys(siteContent.contact);
 
-for (let i = 0; i < contactElements[0].children.length; i++) {
-  contactElements[0].children[i].textContent =
-    siteContent.contact[contactContent[i]];
-}
+contactH4.textContent = siteContent.contact[contactContent[0]];
+
+contactPara.forEach(
+  (element, index = 1) =>
+    (element.textContent = siteContent.contact[contactContent[index]])
+);
 
 // Footer section
-const footer = document.getElementsByTagName("footer");
+const footer = document.querySelector("footer p");
 
-footer[0].textContent = siteContent.footer.copyright;
+footer.textContent = siteContent.footer.copyright;
 
 // change color of nav text
 navElements.forEach(element => (element.style.color = "green"));
