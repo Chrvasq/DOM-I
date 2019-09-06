@@ -61,7 +61,10 @@ navElements.forEach(
 // h1
 const ctaH1 = document.querySelector(".cta-text h1");
 const ctaH1Text = siteContent.cta.h1.split(" ");
-ctaH1.innerHTML = `${ctaH1Text[0]}<br> ${ctaH1Text[1]}<br> ${ctaH1Text[2]}`;
+ctaH1.insertAdjacentHTML(
+  "afterbegin",
+  `${ctaH1Text[0]}<br> ${ctaH1Text[1]}<br> ${ctaH1Text[2]}`
+);
 
 // button
 const ctaButton = document.querySelector("button");
